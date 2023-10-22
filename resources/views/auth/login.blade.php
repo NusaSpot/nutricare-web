@@ -24,7 +24,7 @@
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5 rounded">
                             <center class="mb-4">
                                 <img src="{{ asset('assets/img/nusaspot.png') }}" width="50px" class="mb-4">
-                                <h4>Halo, Selamat Datang !</h4>
+                                <h4>Halo NusaSpot Owner, Selamat Datang !</h4>
                                 <h6 class="fw-light mb-4">Baru di NusaSpot ? <a href="{{ route('register') }}">Registrasi Disini</a></h6>
                                 @if (Session::get('success') != '')
                                     <div class='alert alert-success'>
