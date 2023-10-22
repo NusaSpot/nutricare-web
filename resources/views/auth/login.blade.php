@@ -1,53 +1,83 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>NusaSpot Owner</title>
+    <link rel="shortcut icon" href="{{ asset('assets/img/nusaspot.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('template/vendors/feather/feather.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/vendors/ti-icons/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/vendors/typicons/typicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/vendors/simple-line-icons/css/simple-line-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/css/vertical-layout-light/style.css') }}">
+</head>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5 rounded">
+                            @if (Session::get('success') != '')
+                                <div class='alert alert-success'>
+                                    <center><b>{{ Session::get('success') }}</b></center>
+                                </div>
+                            @endif
+                            <center class="mb-4">
+                                <img src="{{ asset('assets/img/nusaspot.png') }}" width="50px" class="mb-4">
+                                <h4>Halo, Selamat Datang !</h4>
+                                <h6 class="fw-light mb-4">Baru di NusaSpot ? <a href="{{ route('register') }}">Registrasi Disini</a></h6>
+                            </center>
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text"
+                                        class="form-control form-control-lg rounded @error('email') is-invalid @enderror"
+                                        name="email" value="{{ old('email') }}" placeholder="Email" required
+                                        autofocus>
+                                </div>
+                                @error('email')
+                                    <strong style="color:red">{{ $message }}</strong>
+                                @enderror
+                                <div class="form-group">
+                                    <input type="password"
+                                        class="form-control form-control-lg mb-2 rounded @error('password') is-invalid @enderror"
+                                        name="password" placeholder="Password" required autocomplete="current-password">
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                        <a href="">Lupa Password ?</a>
+                                </div>
+                                @error('password')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
+                                <div class="mt-1">
+                                    <button type="submit" class="btn form-control rounded" style="padding-bottom:30px; background-color:#6528F7; color:white">Login</button>
+                                </div>
+                                <hr>
+                                <div style="text-align: center;">
+                                    <span>Atau Login Dengan</span>
+                                    <br>
+                                    <a href="{{ url('login/google') }}">
+                                        <img src="{{ asset('assets/img/google.png') }}" alt="Masuk Dengan Google" width="50px" class="mt-2">
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <script src="{{ asset('template/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset('template/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('template/js/off-canvas.js') }}"></script>
+    <script src="{{ asset('template/js/hoverable-collapse.js') }}"></script>
+    <script src="{{ asset('template/js/template.js') }}"></script>
+    <script src="{{ asset('template/js/settings.js') }}"></script>
+    <script src="{{ asset('template/js/todolist.js') }}"></script>
+</body>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-            <a
-                href="/login/google"
-                class="ml-3 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
-                >
-                Login Google
-            </a>
-        </div>
-    </form>
-</x-guest-layout>
+</html>
