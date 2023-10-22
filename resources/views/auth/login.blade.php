@@ -22,15 +22,15 @@
                 <div class="row w-100 mx-0">
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5 rounded">
-                            @if (Session::get('success') != '')
-                                <div class='alert alert-success'>
-                                    <center><b>{{ Session::get('success') }}</b></center>
-                                </div>
-                            @endif
                             <center class="mb-4">
                                 <img src="{{ asset('assets/img/nusaspot.png') }}" width="50px" class="mb-4">
                                 <h4>Halo, Selamat Datang !</h4>
                                 <h6 class="fw-light mb-4">Baru di NusaSpot ? <a href="{{ route('register') }}">Registrasi Disini</a></h6>
+                                @if (Session::get('success') != '')
+                                    <div class='alert alert-success'>
+                                        <center><b>{{ Session::get('success') }}</b></center>
+                                    </div>
+                                @endif
                             </center>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
@@ -48,7 +48,7 @@
                                         class="form-control form-control-lg mb-2 rounded @error('password') is-invalid @enderror"
                                         name="password" placeholder="Password" required autocomplete="current-password">
 
-                                        <a href="">Lupa Password ?</a>
+                                        <a href="{{ route('password.request') }}">Lupa Password ?</a>
                                 </div>
                                 @error('password')
                                     <strong>{{ $message }}</strong>

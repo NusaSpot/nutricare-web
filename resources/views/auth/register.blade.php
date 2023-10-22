@@ -37,7 +37,7 @@
                                 <div class="form-group">
                                     <input type="text"
                                         class="form-control form-control-lg rounded @error('name') is-invalid @enderror"
-                                        name="name" value="{{ old('name') }}" placeholder="Name" required
+                                        name="name" value="{{ old('name') }}" placeholder="Input Nama" required
                                         autofocus>
                                         @error('name')
                                             <strong style="color:red">{{ $message }}</strong>
@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <input type="text"
                                         class="form-control form-control-lg rounded @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }}" placeholder="Email" required
+                                        name="email" value="{{ old('email') }}" placeholder="Input Email" required
                                         autofocus>
                                         @error('email')
                                             <strong style="color:red">{{ $message }}</strong>
@@ -55,7 +55,7 @@
                                 <div class="form-group">
                                     <input type="password"
                                         class="form-control form-control-lg mb-2 rounded @error('password') is-invalid @enderror"
-                                        name="password" placeholder="Password" required autocomplete="current-password">
+                                        name="password" placeholder="Input Password" required autocomplete="current-password">
                                         @error('password')
                                             <strong style="color:red">{{ $message }}</strong>
                                         @enderror
@@ -63,7 +63,7 @@
                                 <div class="form-group">
                                     <input type="password"
                                         class="form-control form-control-lg mb-2 rounded @error('password_confirmation') is-invalid @enderror"
-                                        name="password_confirmation" placeholder="Confirm Password" required autocomplete="current-password">
+                                        name="password_confirmation" placeholder="Konfirmasi Password" required autocomplete="current-password">
                                         @error('password_confirmation')
                                             <strong style="color:red">{{ $message }}</strong>
                                         @enderror
