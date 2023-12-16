@@ -11,13 +11,13 @@ class SocialiteLogin extends Model
     use HasFactory;
 
     protected $fillable = [
-        'owner_id',
+        'nutritionist_id',
         'provider',
         'provider_id'
     ];
 
-    public function owner(): BelongsTo
+    public function nutritionist(): BelongsTo
     {
-        return $this->belongsTo(Owner::class);
+        return $this->belongsTo(Nutritionist::class);
     }
 }

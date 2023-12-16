@@ -4,8 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>NusaSpot Owner</title>
-    <link rel="shortcut icon" href="{{ asset('assets/img/nusaspot.png') }}" type="image/x-icon">
+    <title>NutriCare Ahli Gizi</title>
+    <link rel="shortcut icon" href="{{ asset('assets/img/nutricare.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('template/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('template/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template/vendors/ti-icons/css/themify-icons.css') }}">
@@ -23,9 +23,9 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5 rounded">
                             <center class="mb-4">
-                                <img src="{{ asset('assets/img/nusaspot.png') }}" width="50px" class="mb-4">
-                                <h4>Halo NusaSpot Owner !</h4>
-                                <h6 class="fw-light mb-4">Baru di NusaSpot ? <a href="{{ route('register') }}">Registrasi Disini</a></h6>
+                                <img src="{{ asset('assets/img/nutricare.png') }}" width="50px" class="mb-4">
+                                <h4>Halo Ahli Gizi !</h4>
+                                <h6 class="fw-light mb-4">Baru di NutriCare ? <a href="{{ route('register') }}">Registrasi Disini</a></h6>
                                 @if (Session::get('success') != '')
                                     <div class='alert alert-success'>
                                         <center><b>{{ Session::get('success') }}</b></center>
@@ -54,7 +54,7 @@
                                     <strong>{{ $message }}</strong>
                                 @enderror
                                 <div class="mt-1">
-                                    <button type="submit" class="btn form-control rounded" style="padding-bottom:30px; background-color:#6528F7; color:white">Login</button>
+                                    <button type="submit" class="btn form-control rounded" style="padding-bottom:30px; background-color:#53A150; color:white">Login</button>
                                 </div>
                                 <hr>
                                 <div style="text-align: center;">

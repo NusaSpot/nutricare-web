@@ -62,7 +62,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Owner::class,
+            'model' => App\Models\Nutritionist::class,
         ],
 
         // 'users' => [

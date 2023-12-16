@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Nutritionist;
 use App\Models\Owner;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -33,14 +34,15 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Owner::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Nutritionist::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = Owner::create([
+        $user = Nutritionist::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'password_status' => true
         ]);
 
         event(new Registered($user));

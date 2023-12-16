@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>NusaSpot Owner</title>
+    <title>Nutricare Ahli Gizi</title>
     <link rel="shortcut icon" href="{{ asset('assets/img/nusaspot.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('template/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('template/vendors/mdi/css/materialdesignicons.min.css') }}">
@@ -28,7 +28,7 @@
                                 </div>
                             @endif
                             <center class="mb-4">
-                                <img src="{{ asset('assets/img/nusaspot.png') }}" width="50px" class="mb-4">
+                                <img src="{{ asset('assets/img/nutricare.png') }}" width="50px" class="mb-4">
                                 <h4>Registrasi Akun</h4>
                                 <h6 class="fw-light mb-4">Sudah ada akun ? <a href="{{ route('login') }}">Login Disini</a></h6>
                             </center>
@@ -69,7 +69,7 @@
                                         @enderror
                                 </div>
                                 <div class="mt-1">
-                                    <button type="submit" class="btn form-control rounded" style="padding-bottom:30px; background-color:#6528F7; color:white">Sign Up</button>
+                                    <button type="submit" class="btn form-control rounded" style="padding-bottom:30px; background-color:#53A150; color:white">Sign Up</button>
                                 </div>
                                 <hr>
                                 <div style="text-align: center;">

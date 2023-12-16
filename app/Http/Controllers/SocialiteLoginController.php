@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nutritionist;
 use App\Models\Owner;
 use App\Models\SocialiteLogin;
 use Carbon\Carbon;
@@ -18,12 +19,12 @@ class SocialiteLoginController extends Controller
     {
         $socialiteUser = Socialite::driver('google')->user();
     
-        $user = Owner::where('email', $socialiteUser->getEmail())->first();
+        $user = Nutritionist::where('email', $socialiteUser->getEmail())->first();
     
         if ($user) {
             auth()->login($user);
         } else {
-            $user = Owner::create([
+            $user = Nutritionist::create([
                 'email' => $socialiteUser->getEmail(),
                 'name' => $socialiteUser->getName(),
                 'password' => bcrypt(uniqid(10)),
@@ -31,7 +32,7 @@ class SocialiteLoginController extends Controller
             ]);
     
             SocialiteLogin::create([
-                'owner_id' => $user->id,
+                'nutritionist_id' => $user->id,
                 'provider' => 'google',
                 'provider_id' => $socialiteUser->getId(),
             ]);
