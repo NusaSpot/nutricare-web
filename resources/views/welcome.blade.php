@@ -234,7 +234,7 @@
 
                     <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
                         <div class="member" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="pic"><img src="{{ asset('assets/img/maruf.jpg') }}" style="max-height: 300px" class="img-fluid"
+                            <div class="pic"><img src="{{ asset('assets/img/maruf.jpeg') }}" style="max-height: 300px" class="img-fluid"
                                     alt=""></div>
                             <div class="member-info">
                                 <h4>Ma'Ruf</h4>
