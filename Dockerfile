@@ -1,54 +1,16 @@
 FROM php:8.1-fpm-alpine
 
-RUN apk --update add \
+RUN apk --update --no-cache add \
+    nginx \
     wget \
-    curl \
-    build-base \
-    libmcrypt-dev \
-    libxml2-dev \
-    pcre-dev \
-    zlib-dev \
-    autoconf \
-    oniguruma-dev \
-    openssl \
-    openssl-dev \
+    libzip-dev \
+    unzip \
     freetype-dev \
     libjpeg-turbo-dev \
-    jpeg-dev \
     libpng-dev \
-    imagemagick-dev \
-    imagemagick \
-    postgresql-dev \
-    libzip-dev \
-    gettext-dev \
-    libxslt-dev \
-    libgcrypt-dev &&\
-    rm /var/cache/apk/*
-
-RUN pecl channel-update pecl.php.net && \
-    pecl install mcrypt redis-5.3.7 && \
-    rm -rf /tmp/pear
-
-RUN docker-php-ext-install \
-    mysqli \
-    mbstring \
-    pdo \
-    pdo_mysql \
-    xml \
-    pcntl \
-    bcmath \
-    pdo_pgsql \
-    zip \
-    intl \
-    gettext \
-    soap \
-    sockets \
-    xsl
-
-RUN docker-php-ext-configure gd --with-freetype=/usr/lib/ --with-jpeg=/usr/lib/ && \
-    docker-php-ext-install gd
-
-RUN docker-php-ext-enable redis
+    && docker-php-ext-install zip pdo_mysql \
+    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd
 
 # Install nginx and other dependencies
 RUN apk add --no-cache nginx wget
