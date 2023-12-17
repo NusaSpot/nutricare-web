@@ -32,10 +32,6 @@ class ProfileController extends Controller
 
         $user = Nutritionist::find(auth()->user()->id);
         $userId = $user->id;
-        $user->name = $request->name;
-        $user->is_eligible = 'pending';
-        $user->save();
-
         $profile = $user->nutritionistProfile;
 
         if (!$profile) {
@@ -43,9 +39,12 @@ class ProfileController extends Controller
                 'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'cv' => 'required|mimes:pdf|max:2048'
             ]);
+            $user->is_eligible = 'pending';
 
             $profile = new NutritionistProfile();
         }
+        $user->name = $request->name;
+        $user->save();
 
         $profile->nutritionist_id = $userId;
         $profile->gender = $request->gender;

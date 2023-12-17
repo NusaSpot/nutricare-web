@@ -8,9 +8,125 @@ RUN apk --update --no-cache add \
     freetype-dev \
     libjpeg-turbo-dev \
     libpng-dev \
-    && docker-php-ext-install zip pdo_mysql \
-    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd
+    bcmath-dev \
+    libbz2 \
+    calendar \
+    coreutils \
+    libxml2-dev \
+    curl \
+    date \
+    libdbi-dev \
+    libmcrypt-dev \
+    exif \
+    ffi-dev \
+    file \
+    gettext-dev \
+    gmp-dev \
+    icu-dev \
+    json \
+    openldap-dev \
+    libxml2-dev \
+    mbstring \
+    libedit-dev \
+    libedit \
+    gd \
+    gettext \
+    gmp \
+    hash \
+    iconv \
+    icu-libs \
+    json \
+    openldap \
+    libxml2 \
+    libxml2-dev \
+    mbstring \
+    mysqli \
+    mysqlnd \
+    unixodbc-dev \
+    openssl-dev \
+    pcntl \
+    pcre \
+    pdo \
+    freetds-dev \
+    pdo_mysql \
+    pdo_odbc \
+    pdo_pgsql \
+    pdo_sqlite \
+    postgresql-dev \
+    sqlite \
+    sqlite-dev \
+    pspell-dev \
+    readline-dev \
+    redis \
+    oniguruma-dev \
+    libressl-dev \
+    libssh2-dev \
+    libxslt-dev \
+    gettext \
+    sysvmsg \
+    sysvsem \
+    sysvshm \
+    tidyhtml-libs \
+    libzip \
+    libxml2-dev \
+    autoconf \
+    build-base \
+    tidyhtml-dev \
+    libxslt-dev \
+    libedit \
+    libxml2 \
+    libxslt \
+    freetype \
+    libjpeg-turbo \
+    libpng \
+    gnu-libiconv \
+    libxslt-dev \
+    zlib \
+    zlib-dev
+
+# Install additional PHP extensions
+RUN docker-php-ext-install \
+    bcmath \
+    bz2 \
+    calendar \
+    exif \
+    ffi \
+    fileinfo \
+    ftp \
+    gettext \
+    gmp \
+    ldap \
+    mbstring \
+    mysqli \
+    odbc \
+    pcntl \
+    pdo \
+    pdo_dblib \
+    pdo_mysql \
+    pdo_odbc \
+    pdo_pgsql \
+    pdo_sqlite \
+    pgsql \
+    pspell \
+    readline \
+    redis \
+    shmop \
+    simplexml \
+    soap \
+    sockets \
+    sodium \
+    sqlite3 \
+    sysvmsg \
+    sysvsem \
+    sysvshm \
+    tidy \
+    tokenizer \
+    xml \
+    xmlreader \
+    xmlwriter \
+    xsl \
+    zip
+
 
 # Install nginx and other dependencies
 RUN apk add --no-cache nginx wget
