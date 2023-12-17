@@ -20,7 +20,7 @@ class SocialiteLoginController extends Controller
         try {
             $socialiteUser = Socialite::driver('google')->user();
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            return 'invalid';
         }
     
         $user = Nutritionist::where('email', $socialiteUser->getEmail())->withTrashed()->first();
