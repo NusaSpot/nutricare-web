@@ -1,132 +1,54 @@
 FROM php:8.1-fpm-alpine
 
-RUN apk --update --no-cache add \
-    nginx \
+RUN apk --update add \
     wget \
-    libzip-dev \
-    unzip \
+    curl \
+    build-base \
+    libmcrypt-dev \
+    libxml2-dev \
+    pcre-dev \
+    zlib-dev \
+    autoconf \
+    oniguruma-dev \
+    openssl \
+    openssl-dev \
     freetype-dev \
     libjpeg-turbo-dev \
+    jpeg-dev \
     libpng-dev \
-    bcmath-dev \
-    libbz2 \
-    calendar \
-    coreutils \
-    libxml2-dev \
-    curl \
-    date \
-    libdbi-dev \
-    libmcrypt-dev \
-    exif \
-    ffi-dev \
-    file \
-    gettext-dev \
-    gmp-dev \
-    icu-dev \
-    json \
-    openldap-dev \
-    libxml2-dev \
-    mbstring \
-    libedit-dev \
-    libedit \
-    gd \
-    gettext \
-    gmp \
-    hash \
-    iconv \
-    icu-libs \
-    json \
-    openldap \
-    libxml2 \
-    libxml2-dev \
-    mbstring \
-    mysqli \
-    mysqlnd \
-    unixodbc-dev \
-    openssl-dev \
-    pcntl \
-    pcre \
-    pdo \
-    freetds-dev \
-    pdo_mysql \
-    pdo_odbc \
-    pdo_pgsql \
-    pdo_sqlite \
+    imagemagick-dev \
+    imagemagick \
     postgresql-dev \
-    sqlite \
-    sqlite-dev \
-    pspell-dev \
-    readline-dev \
-    redis \
-    oniguruma-dev \
-    libressl-dev \
-    libssh2-dev \
+    libzip-dev \
+    gettext-dev \
     libxslt-dev \
-    gettext \
-    sysvmsg \
-    sysvsem \
-    sysvshm \
-    tidyhtml-libs \
-    libzip \
-    libxml2-dev \
-    autoconf \
-    build-base \
-    tidyhtml-dev \
-    libxslt-dev \
-    libedit \
-    libxml2 \
-    libxslt \
-    freetype \
-    libjpeg-turbo \
-    libpng \
-    gnu-libiconv \
-    libxslt-dev \
-    zlib \
-    zlib-dev
+    libgcrypt-dev &&\
+    rm /var/cache/apk/*
 
-# Install additional PHP extensions
+RUN pecl channel-update pecl.php.net && \
+    pecl install mcrypt redis-5.3.7 && \
+    rm -rf /tmp/pear
+
 RUN docker-php-ext-install \
-    bcmath \
-    bz2 \
-    calendar \
-    exif \
-    ffi \
-    fileinfo \
-    ftp \
-    gettext \
-    gmp \
-    ldap \
-    mbstring \
     mysqli \
-    odbc \
-    pcntl \
+    mbstring \
     pdo \
-    pdo_dblib \
     pdo_mysql \
-    pdo_odbc \
+    xml \
+    pcntl \
+    bcmath \
     pdo_pgsql \
-    pdo_sqlite \
-    pgsql \
-    pspell \
-    readline \
-    redis \
-    shmop \
-    simplexml \
+    zip \
+    intl \
+    gettext \
     soap \
     sockets \
-    sodium \
-    sqlite3 \
-    sysvmsg \
-    sysvsem \
-    sysvshm \
-    tidy \
-    tokenizer \
-    xml \
-    xmlreader \
-    xmlwriter \
-    xsl \
-    zip
+    xsl
 
+RUN docker-php-ext-configure gd --with-freetype=/usr/lib/ --with-jpeg=/usr/lib/ && \
+    docker-php-ext-install gd
+
+RUN docker-php-ext-enable redis
 
 # Install nginx and other dependencies
 RUN apk add --no-cache nginx wget
