@@ -6,8 +6,9 @@ RUN apk --update --no-cache add \
     libzip-dev \
     unzip \
     && docker-php-ext-install zip pdo_mysql
-
-RUN docker-php-ext-install gd
+    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd
+    
 # Install nginx and other dependencies
 RUN apk add --no-cache nginx wget
 
