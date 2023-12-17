@@ -19,9 +19,12 @@ class SocialiteLoginController extends Controller
     {
         $socialiteUser = Socialite::driver('google')->user();
     
-        $user = Nutritionist::where('email', $socialiteUser->getEmail())->first();
+        $user = Nutritionist::where('email', $socialiteUser->getEmail())->withTrashed()->first();
     
         if ($user) {
+            if ($user->trashed()) {
+                return redirect()->route('login')->with('error' ,'Akun anda sudah di suspend !');
+            }
             auth()->login($user);
         } else {
             $user = Nutritionist::create([

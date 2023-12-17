@@ -31,6 +31,11 @@
                                         <center><b>{{ Session::get('success') }}</b></center>
                                     </div>
                                 @endif
+                                @if (Session::get('error') != '')
+                                    <div class='alert alert-danger'>
+                                        <center><b>{{ Session::get('error') }}</b></center>
+                                    </div>
+                                @endif
                             </center>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
