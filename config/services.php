@@ -34,7 +34,7 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => env('GOOGLE_REDIRECT_URI'), // callback url
+        'redirect' => env('GOOGLE_REDIRECT_URI', 'https://nutricare-web-4m337nn6bq-et.a.run.app/login/google/callback'), // callback url
     ]
 
 ];

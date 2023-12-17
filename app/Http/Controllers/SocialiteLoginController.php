@@ -17,11 +17,7 @@ class SocialiteLoginController extends Controller
 
     public function handleProviderCallback()
     {
-        try {
-            $socialiteUser = Socialite::driver('google')->user();
-        } catch (\Exception $e) {
-            return 'invalid';
-        }
+        $socialiteUser = Socialite::driver('google')->user();
     
         $user = Nutritionist::where('email', $socialiteUser->getEmail())->withTrashed()->first();
     
