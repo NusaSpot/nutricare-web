@@ -4,8 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>NusaSpot Owner</title>
-    <link rel="shortcut icon" href="{{ asset('assets/img/nusaspot.png') }}" type="image/x-icon">
+    <title>Nutricare Ahli Gizi</title>
+    <link rel="shortcut icon" href="{{ asset('assets/img/nutricare.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('template/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('template/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template/vendors/ti-icons/css/themify-icons.css') }}">
@@ -23,7 +23,7 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5 rounded">
                             <center class="mb-4">
-                                <img src="{{ asset('assets/img/nusaspot.png') }}" width="50px" class="mb-4">
+                                <img src="{{ asset('assets/img/nutricare.png') }}" width="50px" class="mb-4">
                                 <h4>Lupa Password</h4>
                                 @if (Session::get('success') != '')
                                     <div class='alert alert-success'>
@@ -44,7 +44,7 @@
                                         @enderror
                                 </div>
                                 <div class="mt-1">
-                                    <button type="submit" class="btn form-control rounded" style="padding-bottom:30px; background-color:#6528F7; color:white">Submit</button>
+                                    <button type="submit" class="btn form-control rounded" style="padding-bottom:30px; background-color:#53A150; color:white">Submit</button>
                                 </div>
                             </form>
                         </div>
