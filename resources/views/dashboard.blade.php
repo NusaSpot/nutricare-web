@@ -18,7 +18,7 @@
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="progress-data">
                         <span class="user-icon shadow-none mb-0">
-                            <img src="{{ asset('main/src/images/illustrations/male.svg')}}" alt="">
+                            <img src="{{ auth()->user()->nutritionistProfile ? auth()->user()->nutritionistProfile->profilePictureLink : asset('main/src/images/illustrations/male.svg') }}" alt="">
                         </span>
                     </div>
                     <div class="widget-data">
